@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Custom Looping Video</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+    }
+    video {
+      max-width: 90%;
+      max-height: 90%;
+    }
+  </style>
+</head>
+<body>
+  <video id="customLoopVideo" autoplay muted>
+    <source src="tanvi_invitation.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <script>
+    const video = document.getElementById('customLoopVideo');
+    const startTime = 2.1; // Start of the loop (in seconds)
+    const endTime = 5;   // End of the loop (in seconds)
+
+    // Ensure the video starts playing immediately
+    video.addEventListener('loadedmetadata', () => {
+      video.currentTime = startTime;
+      video.play();
+    });
+
+    // Custom loop logic
+    video.addEventListener('timeupdate', () => {
+      if (video.currentTime >= endTime) {
+        video.currentTime = startTime;
+        video.play(); // Ensure playback resumes immediately
+      }
+    });
+  </script>
+</body>
+</html>
