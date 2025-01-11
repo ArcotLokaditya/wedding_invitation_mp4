@@ -27,12 +27,12 @@
 
   <script>
     const video = document.getElementById('customLoopVideo');
-    const startTime = 2.1; // Start of the loop (in seconds)
+    const startTime = 2.2; // Start of the loop (in seconds)
     const endTime = 5;   // End of the loop (in seconds)
 
-    // Ensure the video starts playing immediately
+    // Ensure the video starts playing at the custom start time
     video.addEventListener('loadedmetadata', () => {
-      video.currentTime = startTime;
+      video.currentTime = 0;
       video.play();
     });
 
@@ -40,7 +40,7 @@
     video.addEventListener('timeupdate', () => {
       if (video.currentTime >= endTime) {
         video.currentTime = startTime;
-        video.play(); // Ensure playback resumes immediately
+        video.play();
       }
     });
   </script>
